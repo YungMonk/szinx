@@ -1,8 +1,8 @@
 {
-    "Name":"zinx v0.9 demoServerApp",
-    "Host":"127.0.0.1",
+    "Name":"MMO Game Zinx",
+    "Host":"0.0.0.0",
     "TcpPort":8999,
-    "MaxConn":2,
+    "MaxConn":2000,
     "IPVersion":"tcp4",
-    "WorkerPoolSize":10
+    "WorkerPoolSize":8
 }
