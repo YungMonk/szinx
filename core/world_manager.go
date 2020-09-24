@@ -2,8 +2,8 @@ package core
 
 import "sync"
 
-// WordManager 当前世界总管理模块
-type WordManager struct {
+// WorldManager 当前世界总管理模块
+type WorldManager struct {
 	// AOIManager 当前世界地图的 AOI 管理模块
 	AoiManager *AOIManager
 
@@ -14,12 +14,12 @@ type WordManager struct {
 	pLock sync.RWMutex
 }
 
-// WordMgrObj 提供一个对外的世界管理模块句柄（全局）
-var WordMgrObj *WordManager
+// WorldMgrObj 提供一个对外的世界管理模块句柄（全局）
+var WorldMgrObj *WorldManager
 
 // 初始化世界管理模块
 func init() {
-	WordMgrObj = &WordManager{
+	WorldMgrObj = &WorldManager{
 		// 创建世界
 		AoiManager: NewAOIManager(
 			AOIMINX,
@@ -35,7 +35,7 @@ func init() {
 }
 
 // AddPlayer 添加一个 Player
-func (wm *WordManager) AddPlayer(player *Player) {
+func (wm *WorldManager) AddPlayer(player *Player) {
 	wm.pLock.Lock()
 	wm.Players[player.Pid] = player
 	wm.pLock.Unlock()
@@ -45,7 +45,7 @@ func (wm *WordManager) AddPlayer(player *Player) {
 }
 
 // RemovePlayerByPid 删除一个 Player
-func (wm *WordManager) RemovePlayerByPid(pid int32) {
+func (wm *WorldManager) RemovePlayerByPid(pid int32) {
 	// 取得当前玩家
 	player := wm.Players[pid]
 
@@ -59,7 +59,7 @@ func (wm *WordManager) RemovePlayerByPid(pid int32) {
 }
 
 // GetPlayerByPid 通过玩家ID查询player对象
-func (wm *WordManager) GetPlayerByPid(pid int32) (player *Player) {
+func (wm *WorldManager) GetPlayerByPid(pid int32) (player *Player) {
 	wm.pLock.RLock()
 	defer wm.pLock.RUnlock()
 
@@ -67,7 +67,7 @@ func (wm *WordManager) GetPlayerByPid(pid int32) (player *Player) {
 }
 
 // GetAllPlayers 获取全部在线玩家
-func (wm *WordManager) GetAllPlayers() (players []*Player) {
+func (wm *WorldManager) GetAllPlayers() (players []*Player) {
 	wm.pLock.RLock()
 	defer wm.pLock.RUnlock()
 

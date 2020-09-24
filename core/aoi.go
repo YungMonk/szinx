@@ -139,7 +139,7 @@ func (am *AOIManager) GetPidsByPos(x, y float32) (playerIDs []int) {
 	// 通完gids得到所有的playerIDs
 	for _, Grid := range gids {
 		playerIDs = append(playerIDs, Grid.GetPlayerIDs()...)
-		fmt.Printf("===> [Grid] ID:%d, Pids:%+v", Grid.GID, Grid.GetPlayerIDs())
+		// fmt.Printf("===> [Grid] ID:%d, Pids:%+v\n", Grid.GID, Grid.GetPlayerIDs())
 	}
 
 	return playerIDs

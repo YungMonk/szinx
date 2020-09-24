@@ -13,7 +13,7 @@ message SyncPid {
 // 广播消息
 message BroadCast {
     int32 Pid = 1;             // 
-    int32 Tp = 2;              // 1-世界聊天，2-玩家位置，3-动作，4-移动之后坐标的更新
+    int32 Tp = 2;              // 1-世界聊天，2-玩家上线位置，3-动作，4-移动之后的坐标
     oneof Data {
         string Content=3;      // 玩家的聊天信息
         Position P=4;          // 广播玩家的位置
@@ -32,4 +32,15 @@ message Position {
 // 世界聊天
 message Talk {
     string Content = 1;
+}
+
+// 同步玩家的显示数据
+message SyncPlayer {
+    repeated Player ps= 1;
+}
+
+// 要同步的显示数据
+message Player {
+    int32 Pid=1;
+    Position P=2;
 }
