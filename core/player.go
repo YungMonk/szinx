@@ -5,6 +5,8 @@ import (
 	"math/rand"
 	"sync"
 
+	"szinx/pb"
+
 	"github.com/YungMonk/zinx/ziface"
 	"github.com/golang/protobuf/proto"
 )
@@ -63,4 +65,35 @@ func (p *Player) SendMsg(msgID uint32, data proto.Message) {
 	}
 
 	return
+}
+
+// SyncPid 告知客户端玩家Pid，同步已经生成的玩家ID给客户端
+func (p *Player) SyncPid() {
+	// 组建 MsgID:1 的 proto 数据
+	protoMsg := &pb.SyncPid{
+		Pid: p.Pid,
+	}
+
+	// 将消息发送给客户端
+	p.SendMsg(1, protoMsg)
+}
+
+// BroadCastStartPosition 广播玩家的上线地点
+func (p *Player) BroadCastStartPosition() {
+	// 组建 MsgID:200 的 proto 数据
+	protoMsg := &pb.BroadCast{
+		Pid: p.Pid,
+		Tp:  2,
+		Data: &pb.BroadCast_P{
+			P: &pb.Position{
+				X: p.X,
+				Y: p.Y,
+				Z: p.Z,
+				V: p.Z,
+			},
+		},
+	}
+
+	// 将消息发送给客户端
+	p.SendMsg(200, protoMsg)
 }

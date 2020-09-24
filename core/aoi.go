@@ -4,6 +4,16 @@ import (
 	"fmt"
 )
 
+// 定义一些 AOI 的边界值
+const (
+	AOIMINX int = 85
+	AOIMAXX int = 410
+	AOICNTX int = 10
+	AOIMINY int = 75
+	AOIMAXY int = 400
+	AOICNTY int = 20
+)
+
 // AOIManager AOI 区域管理模块
 type AOIManager struct {
 	// 区域的左边边界坐标

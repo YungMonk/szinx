@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"szinx/core"
 
 	"github.com/YungMonk/zinx/ziface"
 	"github.com/YungMonk/zinx/znet"
@@ -76,18 +77,33 @@ func DoConnncetionLost(conn ziface.IConnection) {
 	}
 }
 
+// OnConnectionAdd 当前客户端创建连接之后执行的 Hook 函数
+func OnConnectionAdd(conn ziface.IConnection) {
+	// 创建一个Player对象
+	player := core.NewPlayer(conn)
+
+	// 给客户端发送MsgID=1的消息，同步当前的playerID给客户端
+	player.SyncPid()
+
+	// 给客户端发送MsgID=200的消息，同步当前player的位置给客户端
+	player.BroadCastStartPosition()
+
+	fmt.Println("====> Player pid=", player.Pid, " is arrived ====")
+}
+
 func main() {
 	// 1.创建Server句柄，使用zinx的api
 	s := znet.NewServer("[zinx.v0.5]")
 
 	// 2.注册连接 Hook 钩子函数
-	s.SetOnConnStart(DoConnectionBegin)
-	s.SetOnConnStop(DoConnncetionLost)
+	// s.SetOnConnStart(DoConnectionBegin)
+	s.SetOnConnStart(OnConnectionAdd)
+	// s.SetOnConnStop(DoConnncetionLost)
 
 	// 3.给服务注册路由
-	s.AddRouter(0, &PingRouter{})
-	s.AddRouter(1, &PingRouter{})
-	s.AddRouter(2, &HelloZinxRouter{})
+	// s.AddRouter(0, &PingRouter{})
+	// s.AddRouter(1, &PingRouter{})
+	// s.AddRouter(2, &HelloZinxRouter{})
 
 	// 4.启动Server
 	s.Serve()

@@ -28,3 +28,8 @@ message Position {
     float Z=3;    // 空间 z 坐标
     float V=4;    // 空间倾斜角度
 }
+
+// 世界聊天
+message Talk {
+    string Content = 1;
+}
