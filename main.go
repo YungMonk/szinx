@@ -29,7 +29,21 @@ func OnConnectionAdd(conn ziface.IConnection) {
 	// 在当前玩家上线之后，触发同步当前玩家位置信息（告知周围玩家当前玩家已经上线）
 	player.SyncSurrounding()
 
-	fmt.Println("====> Player pid=", player.Pid, " is arrived ====")
+	fmt.Println("\n====> Player pid=", player.Pid, " is arrived ====")
+}
+
+// OnConnectionLost 当前客户端断开连接之前执行的 Hook 函数
+func OnConnectionLost(conn ziface.IConnection) {
+	// 获取当前连接绑定的玩家 ID
+	pid, _ := conn.GetProperty("pid")
+
+	// 获取当前连接周边的玩家信息
+	player := core.WorldMgrObj.Players[pid.(int32)]
+
+	// 触发玩家下线的业务
+	player.Offline()
+
+	fmt.Printf("====> Player pid=%d will offline <====", pid)
 }
 
 func main() {
@@ -38,7 +52,7 @@ func main() {
 
 	// 2.注册连接 Hook 钩子函数
 	s.SetOnConnStart(OnConnectionAdd)
-	// s.SetOnConnStop(DoConnncetionLost)
+	s.SetOnConnStop(OnConnectionLost)
 
 	// 3.给服务注册路由
 	s.AddRouter(2, &apis.WorldChatAPI{})

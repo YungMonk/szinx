@@ -25,7 +25,7 @@ const (
 // of the legacy proto package is being used.
 const _ = proto.ProtoPackageIsVersion4
 
-// 同步玩家 ID
+// MsgID=1 同步玩家 ID
 type SyncPid struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -73,7 +73,7 @@ func (x *SyncPid) GetPid() int32 {
 	return 0
 }
 
-// 广播消息
+// MsgID=200 广播消息
 type BroadCast struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -184,7 +184,7 @@ func (*BroadCast_P) isBroadCast_Data() {}
 
 func (*BroadCast_ActionData) isBroadCast_Data() {}
 
-// 位置信息
+// MsgID=200 位置信息
 type Position struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -256,7 +256,7 @@ func (x *Position) GetV() float32 {
 	return 0
 }
 
-// 世界聊天
+// MsgID=200  世界聊天
 type Talk struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -304,7 +304,7 @@ func (x *Talk) GetContent() string {
 	return ""
 }
 
-// 同步玩家的显示数据
+// MsgID=202 同步玩家的显示数据
 type SyncPlayer struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -352,7 +352,7 @@ func (x *SyncPlayer) GetPs() []*Player {
 	return nil
 }
 
-// 要同步的显示数据
+// MsgID=202 要同步的显示数据
 type Player struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
