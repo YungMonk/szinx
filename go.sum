@@ -1,11 +1,5 @@
 cloud.google.com/go v0.26.0/go.mod h1:aQUYkXzVsufM+DwF1aE+0xfcU+56JwCaLick0ClmMTw=
 github.com/BurntSushi/toml v0.3.1/go.mod h1:xHWCNGjB5oqiDr8zfno3MHue2Ht5sIBksp03qcyfWMU=
-github.com/YungMonk/zinx v0.0.0-20200922072159-36b1033a95fe h1:CnlHmO8t6Y1D73jUe+k/HW56mOMt8g2olJfIlddmboo=
-github.com/YungMonk/zinx v0.0.0-20200922072159-36b1033a95fe/go.mod h1:Xvw4dW4tqze/9rxuyDJ+Y2p4X7VmxfKrAVvOSuFUQFs=
-github.com/YungMonk/zinx v0.0.0-20200924020737-fdd3e1834217 h1:OFHtAhMt/WthPcf0mZbzslkQiy8jxZysW9tFmq7laXA=
-github.com/YungMonk/zinx v0.0.0-20200924020737-fdd3e1834217/go.mod h1:Xvw4dW4tqze/9rxuyDJ+Y2p4X7VmxfKrAVvOSuFUQFs=
-github.com/YungMonk/zinx v0.0.0-20200927034733-9fc540f135c5 h1:z7tNbnZRPvf55RWrewkJD5KNY5mq3ZMwLiqY5ka85Zw=
-github.com/YungMonk/zinx v0.0.0-20200927034733-9fc540f135c5/go.mod h1:Xvw4dW4tqze/9rxuyDJ+Y2p4X7VmxfKrAVvOSuFUQFs=
 github.com/YungMonk/zinx v0.0.0-20200927035025-2b564da3bef0 h1:PSLEXN3ooxs8hyJUHv2o7PktSa5CCY6LMd3rFBw1kAU=
 github.com/YungMonk/zinx v0.0.0-20200927035025-2b564da3bef0/go.mod h1:Xvw4dW4tqze/9rxuyDJ+Y2p4X7VmxfKrAVvOSuFUQFs=
 github.com/census-instrumentation/opencensus-proto v0.2.1/go.mod h1:f6KPmirojxKA12rnyqOA5BBL4O983OfeGPqjHWSTneU=
