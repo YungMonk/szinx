@@ -6,6 +6,7 @@ import (
 	"szinx/core"
 
 	"github.com/YungMonk/zinx/ziface"
+	"github.com/YungMonk/zinx/zlog"
 	"github.com/YungMonk/zinx/znet"
 )
 
@@ -47,6 +48,8 @@ func OnConnectionLost(conn ziface.IConnection) {
 }
 
 func main() {
+	zlog.SetLevel(zlog.LogDebug)
+
 	// 1.创建Server句柄，使用zinx的api
 	s := znet.NewServer("[zinx.v0.5]")
 
