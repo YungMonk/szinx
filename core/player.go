@@ -190,8 +190,8 @@ func (p *Player) UpdatePos(x, y, z, v float32) {
 	players := p.GetSurroundingPlayers()
 
 	// 给周围的玩家发送位置变动信息
-	for _, pler := range players {
-		pler.SendMsg(200, broadcastProtoMsg)
+	for _, player := range players {
+		player.SendMsg(200, broadcastProtoMsg)
 	}
 }
 
